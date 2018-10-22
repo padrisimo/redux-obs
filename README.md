@@ -1,1 +1,3 @@
-# Redux Observables
+# Redux Observable App
+
+Sandbox Application
