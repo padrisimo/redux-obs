@@ -1,12 +1,16 @@
-import { combineEpics } from 'redux-observable';
-import { tap, ignoreElements } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { combineEpics, ofType } from 'redux-observable';
+import { switchMap, delay } from 'rxjs/operators';
+import { LOAD_STORIES, clear } from '../actions';
 
 
-function loadStoriesEpic(action$) {
-  return action$.pipe(
-    tap(action => console.log(action)),
-    ignoreElements()
+const loadStoriesEpic = (action$) =>
+  action$.pipe(
+    ofType(LOAD_STORIES),
+    switchMap(() => of(clear()).pipe(delay(2000))
+    
     )
-}
+  )
+
 
 export const rootEpic = combineEpics(loadStoriesEpic);
