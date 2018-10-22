@@ -7,10 +7,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducer from './reducers';
 import { createEpicMiddleware } from 'redux-observable';
+import { rootEpic } from './epics';
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware();
 
 const store = createStore(reducer, applyMiddleware(epicMiddleware));
+
+epicMiddleware.run(rootEpic);
+
 
 ReactDOM.render(
   <Provider store={store}>
