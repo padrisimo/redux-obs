@@ -4,7 +4,7 @@ export function Beers({ beers, loading }) {
 
   return (
     <div className="Beer-List">
-      <h3>Search Results: ({beers.length}) {loading && <img src="/ajax-loader.gif" />}</h3>
+      <h3>Search Results: ({beers.length}) {loading && <img alt="spiner" src="/ajax-loader.gif" />}</h3>
       {beers.length > 0 && (
         <ul>
           {beers.map(beer => (
